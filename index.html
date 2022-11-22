@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <title>Sample Add Subject</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Subject Available</h1>
+        <table class="table" id="main_tbl">
+            <thead>
+                <tr>
+                    <td>Action</td>
+                    <td>Subject Code</td>
+                    <td>Section</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        Subject 1
+                    </td>
+                    <td>
+                        <select name="" id="section_choice" class="btn btn-secondar">
+                            <option value="sec1" class="dropdown-item" >Section 1</option>
+                            <option value="sec2" class="dropdown-item">Section 2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        Subject 2
+                    </td>
+                    <td class="dropdown">
+                        <select name="" id="section_choice" class="btn btn-secondar">
+                            <option value="sec1" class="dropdown-item" value="Section 1">Section 1</option>
+                            <option value="sec2" class="dropdown-item" value="Section 2">Section 2</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+        <button class="btn btn-dark btn-block" id="btn-trans">Add</button>
+    </div>
+
+    <div class="container">
+        <h1>Summary Table</h1>
+        <table class="table" id="sum_table" aria-readonly="true">
+            <thead>
+                <tr>
+                    <td>Subject Code</td>
+                    <td>Section</td>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <button class="btn btn-success btn-block">Confirm</button>
+    </div>
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+   $(function(){
+    $(document).on("click","#btn-trans",function(){
+        // var getselVals = $("#main_tbl input:checked").parents("tr").clone().appendTo($("#sum_table tbody").add(getselVals));
+        
+       
+
+        // alert(c1);
+        // if($("input").is(":checked")){
+        //     var cr = $("input:checked").closest("tr");
+
+        //     var c1 = cr.find("td:eq(0)").text();
+        //     var c2 = cr.find("td:eq(1)").text();
+        //     var c3 = cr.find("td:eq(2)").find(":selected").text();;
+
+        //     markup = "<tr><td>"+c2+"</td><td>"+c3+"</td></tr>";
+        //     $("#sum_table tbody").append(markup);
+     
+        // }
+
+       
+           $("input:checked").each(function(){
+                
+             var cr = $(this).closest("tr");
+            var c1 = cr.find("td:eq(0)").text();
+            var c2 = cr.find("td:eq(1)").text();
+            var c3 = cr.find("td:eq(2)").find(":selected").text();;
+
+            markup = "<tr><td>"+c2+"</td><td>"+c3+"</td></tr>";
+            $("#sum_table tbody").append(markup);
+
+            //Remove all Added Subject
+            $(this).closest("tr").remove();
+            }
+
+            
+            );
+     
+        
+    })
+   })
+</script>
